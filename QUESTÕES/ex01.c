@@ -2,31 +2,41 @@
 #include <stdlib.h>
 
 void ordenamento(int vetor[]){
-    int i, j, aux = 0; //aux = auxiliar, que vai ajudar a fazer a troca
+    int i, j, aux;
 
-for (i = 6; i > 0; i--) {
-        for (j = 0; i < 6; i++) {
-            if (vetor[j] > vetor[j + 1]) { //se o numero da posicao atual (i) for maior que o numero da posicao seguinte (i+1), entao:
-                aux = vetor[j]; //aux recebe este numero;
-                vetor[j] = vetor[j + 1]; //o numero da posicao seguinte passa para a posicao atual;
-                vetor[j + 1] = aux; 
+    // Laço externo para controlar as passagens do Bubble Sort
+    for (i = 5; i > 0; i--) { // Deve começar em 5 (último índice) e ir até 1, pois está ordenando 6 elementos
+        for (j = 0; j < i; j++) { // Laço interno para comparar os elementos
+            if (vetor[j] > vetor[j + 1]) { // Se o elemento atual for maior que o próximo
+                // Troca os elementos de posição
+                aux = vetor[j];
+                vetor[j] = vetor[j + 1];
+                vetor[j + 1] = aux;
             }
         }
     }
 }
 
 int main(){
-
-    int i = 0;
-    int vetor[6] = {0};
+    int i;
+    int vetor[6];
 
     printf("METODO BUBBLE SORT\nInsira 6 numeros:\n");
 
-    for (i = 0; i < 6; i++) { //laço que coloca os numeros dentro do vetor
+    // Laço para inserir os números no vetor
+    for (i = 0; i < 6; i++) {
        scanf("%d", &vetor[i]);
     }
     
-    ordenamento(vetor); /*chamando a função para ordenar os 
-                        numeros e passando o vetor como parametro*/
+    // Chamada da função para ordenar os números no vetor
+    ordenamento(vetor);
+
+    // Exibir o vetor ordenado
+    printf("\nVetor ordenado:\n");
+    for (i = 0; i < 6; i++) {
+        printf("%d ", vetor[i]);
+    }
+    printf("\n");
+    
     return 0;             
 }
